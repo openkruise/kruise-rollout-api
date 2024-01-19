@@ -59,7 +59,7 @@ gen-openapi-schema: gen-rollouts-openapi
 gen-rollouts-openapi: openapi-gen
 	$(OPENAPI_GEN) \
 	  	--go-header-file hack/boilerplate.go.txt \
-		--input-dirs github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1 \
+		--input-dirs github.com/openkruise/kruise-rollout-api/rollouts/v1beta1 \
 		--output-package pkg/rollouts/ \
   		--report-filename pkg/rollouts/violation_exceptions.list \
   		-o $(CURRENT_DIR)
