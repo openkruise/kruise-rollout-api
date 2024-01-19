@@ -1,5 +1,5 @@
 /*
-Copyright 2022 The Kruise Authors.
+Copyright 2024 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1"
+	v1beta1 "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -52,13 +52,11 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=rollouts.kruise.io, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("batchreleases"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().BatchReleases().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("rollouts"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().Rollouts().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("rollouthistories"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().RolloutHistories().Informer()}, nil
+	// Group=rollouts, Version=v1beta1
+	case v1beta1.SchemeGroupVersion.WithResource("batchreleases"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1beta1().BatchReleases().Informer()}, nil
+	case v1beta1.SchemeGroupVersion.WithResource("rollouts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1beta1().Rollouts().Informer()}, nil
 
 	}
 
