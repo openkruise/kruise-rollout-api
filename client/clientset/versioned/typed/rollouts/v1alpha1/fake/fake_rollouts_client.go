@@ -1,5 +1,5 @@
 /*
-Copyright 2022 The Kruise Authors.
+Copyright 2024 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -38,6 +38,10 @@ func (c *FakeRolloutsV1alpha1) Rollouts(namespace string) v1alpha1.RolloutInterf
 
 func (c *FakeRolloutsV1alpha1) RolloutHistories(namespace string) v1alpha1.RolloutHistoryInterface {
 	return &FakeRolloutHistories{c, namespace}
+}
+
+func (c *FakeRolloutsV1alpha1) TrafficRoutings(namespace string) v1alpha1.TrafficRoutingInterface {
+	return &FakeTrafficRoutings{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

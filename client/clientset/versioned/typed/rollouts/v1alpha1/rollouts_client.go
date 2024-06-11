@@ -1,5 +1,5 @@
 /*
-Copyright 2022 The Kruise Authors.
+Copyright 2024 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ type RolloutsV1alpha1Interface interface {
 	BatchReleasesGetter
 	RolloutsGetter
 	RolloutHistoriesGetter
+	TrafficRoutingsGetter
 }
 
 // RolloutsV1alpha1Client is used to interact with features provided by the rollouts.kruise.io group.
@@ -46,6 +47,10 @@ func (c *RolloutsV1alpha1Client) Rollouts(namespace string) RolloutInterface {
 
 func (c *RolloutsV1alpha1Client) RolloutHistories(namespace string) RolloutHistoryInterface {
 	return newRolloutHistories(c, namespace)
+}
+
+func (c *RolloutsV1alpha1Client) TrafficRoutings(namespace string) TrafficRoutingInterface {
+	return newTrafficRoutings(c, namespace)
 }
 
 // NewForConfig creates a new RolloutsV1alpha1Client for the given config.

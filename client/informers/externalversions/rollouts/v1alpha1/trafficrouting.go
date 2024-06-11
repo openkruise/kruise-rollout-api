@@ -32,59 +32,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// RolloutInformer provides access to a shared informer and lister for
-// Rollouts.
-type RolloutInformer interface {
+// TrafficRoutingInformer provides access to a shared informer and lister for
+// TrafficRoutings.
+type TrafficRoutingInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.RolloutLister
+	Lister() v1alpha1.TrafficRoutingLister
 }
 
-type rolloutInformer struct {
+type trafficRoutingInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewRolloutInformer constructs a new informer for Rollout type.
+// NewTrafficRoutingInformer constructs a new informer for TrafficRouting type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewRolloutInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredRolloutInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewTrafficRoutingInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredTrafficRoutingInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredRolloutInformer constructs a new informer for Rollout type.
+// NewFilteredTrafficRoutingInformer constructs a new informer for TrafficRouting type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredRolloutInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredTrafficRoutingInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.RolloutsV1alpha1().Rollouts(namespace).List(context.TODO(), options)
+				return client.RolloutsV1alpha1().TrafficRoutings(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.RolloutsV1alpha1().Rollouts(namespace).Watch(context.TODO(), options)
+				return client.RolloutsV1alpha1().TrafficRoutings(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&rolloutsv1alpha1.Rollout{},
+		&rolloutsv1alpha1.TrafficRouting{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *rolloutInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredRolloutInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *trafficRoutingInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredTrafficRoutingInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *rolloutInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&rolloutsv1alpha1.Rollout{}, f.defaultInformer)
+func (f *trafficRoutingInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&rolloutsv1alpha1.TrafficRouting{}, f.defaultInformer)
 }
 
-func (f *rolloutInformer) Lister() v1alpha1.RolloutLister {
-	return v1alpha1.NewRolloutLister(f.Informer().GetIndexer())
+func (f *trafficRoutingInformer) Lister() v1alpha1.TrafficRoutingLister {
+	return v1alpha1.NewTrafficRoutingLister(f.Informer().GetIndexer())
 }

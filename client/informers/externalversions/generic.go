@@ -1,5 +1,5 @@
 /*
-Copyright 2022 The Kruise Authors.
+Copyright 2024 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -59,6 +59,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().Rollouts().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("rollouthistories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().RolloutHistories().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("trafficroutings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Rollouts().V1alpha1().TrafficRoutings().Informer()}, nil
 
 	}
 

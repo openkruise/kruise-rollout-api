@@ -1,5 +1,5 @@
 /*
-Copyright 2022 The Kruise Authors.
+Copyright 2024 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,6 +30,8 @@ type Interface interface {
 	Rollouts() RolloutInformer
 	// RolloutHistories returns a RolloutHistoryInformer.
 	RolloutHistories() RolloutHistoryInformer
+	// TrafficRoutings returns a TrafficRoutingInformer.
+	TrafficRoutings() TrafficRoutingInformer
 }
 
 type version struct {
@@ -56,4 +58,9 @@ func (v *version) Rollouts() RolloutInformer {
 // RolloutHistories returns a RolloutHistoryInformer.
 func (v *version) RolloutHistories() RolloutHistoryInformer {
 	return &rolloutHistoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TrafficRoutings returns a TrafficRoutingInformer.
+func (v *version) TrafficRoutings() TrafficRoutingInformer {
+	return &trafficRoutingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
