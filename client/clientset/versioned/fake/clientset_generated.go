@@ -20,6 +20,8 @@ package fake
 
 import (
 	clientset "github.com/openkruise/kruise-rollout-api/client/clientset/versioned"
+	rolloutsv1alpha1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1alpha1"
+	fakerolloutsv1alpha1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1alpha1/fake"
 	rolloutsv1beta1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1beta1"
 	fakerolloutsv1beta1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1beta1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -78,6 +80,11 @@ var (
 	_ clientset.Interface = &Clientset{}
 	_ testing.FakeClient  = &Clientset{}
 )
+
+// RolloutsV1alpha1 retrieves the RolloutsV1alpha1Client
+func (c *Clientset) RolloutsV1alpha1() rolloutsv1alpha1.RolloutsV1alpha1Interface {
+	return &fakerolloutsv1alpha1.FakeRolloutsV1alpha1{Fake: &c.Fake}
+}
 
 // RolloutsV1beta1 retrieves the RolloutsV1beta1Client
 func (c *Clientset) RolloutsV1beta1() rolloutsv1beta1.RolloutsV1beta1Interface {

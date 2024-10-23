@@ -36,9 +36,9 @@ type FakeBatchReleases struct {
 	ns   string
 }
 
-var batchreleasesResource = schema.GroupVersionResource{Group: "rollouts", Version: "v1beta1", Resource: "batchreleases"}
+var batchreleasesResource = schema.GroupVersionResource{Group: "rollouts.kruise.io", Version: "v1beta1", Resource: "batchreleases"}
 
-var batchreleasesKind = schema.GroupVersionKind{Group: "rollouts", Version: "v1beta1", Kind: "BatchRelease"}
+var batchreleasesKind = schema.GroupVersionKind{Group: "rollouts.kruise.io", Version: "v1beta1", Kind: "BatchRelease"}
 
 // Get takes name of the batchRelease, and returns the corresponding batchRelease object, and an error if there is any.
 func (c *FakeBatchReleases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1beta1.BatchRelease, err error) {

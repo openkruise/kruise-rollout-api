@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"net/http"
 
+	rolloutsv1alpha1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1alpha1"
 	rolloutsv1beta1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned/typed/rollouts/v1beta1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
@@ -30,6 +31,7 @@ import (
 
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
+	RolloutsV1alpha1() rolloutsv1alpha1.RolloutsV1alpha1Interface
 	RolloutsV1beta1() rolloutsv1beta1.RolloutsV1beta1Interface
 }
 
@@ -37,7 +39,13 @@ type Interface interface {
 // version included in a Clientset.
 type Clientset struct {
 	*discovery.DiscoveryClient
-	rolloutsV1beta1 *rolloutsv1beta1.RolloutsV1beta1Client
+	rolloutsV1alpha1 *rolloutsv1alpha1.RolloutsV1alpha1Client
+	rolloutsV1beta1  *rolloutsv1beta1.RolloutsV1beta1Client
+}
+
+// RolloutsV1alpha1 retrieves the RolloutsV1alpha1Client
+func (c *Clientset) RolloutsV1alpha1() rolloutsv1alpha1.RolloutsV1alpha1Interface {
+	return c.rolloutsV1alpha1
 }
 
 // RolloutsV1beta1 retrieves the RolloutsV1beta1Client
@@ -89,6 +97,10 @@ func NewForConfigAndClient(c *rest.Config, httpClient *http.Client) (*Clientset,
 
 	var cs Clientset
 	var err error
+	cs.rolloutsV1alpha1, err = rolloutsv1alpha1.NewForConfigAndClient(&configShallowCopy, httpClient)
+	if err != nil {
+		return nil, err
+	}
 	cs.rolloutsV1beta1, err = rolloutsv1beta1.NewForConfigAndClient(&configShallowCopy, httpClient)
 	if err != nil {
 		return nil, err
@@ -114,6 +126,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 // New creates a new Clientset for the given RESTClient.
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
+	cs.rolloutsV1alpha1 = rolloutsv1alpha1.New(c)
 	cs.rolloutsV1beta1 = rolloutsv1beta1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
