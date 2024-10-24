@@ -12,7 +12,7 @@ vet:
 
 # Generate code
 generate: controller-gen
-	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./..."
+	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./rollouts"
 	@hack/generate_client.sh
 
 CONTROLLER_GEN = $(shell pwd)/bin/controller-gen
@@ -59,7 +59,7 @@ gen-openapi-schema: gen-rollouts-openapi
 gen-rollouts-openapi: openapi-gen
 	$(OPENAPI_GEN) \
 	  	--go-header-file hack/boilerplate.go.txt \
-		--input-dirs github.com/openkruise/kruise-rollout-api/rollouts/v1beta1 \
+		--input-dirs github.com/openkruise/kruise-rollout-api/rollouts/v1beta1,github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1 \
 		--output-package pkg/rollouts/ \
   		--report-filename pkg/rollouts/violation_exceptions.list \
   		-o $(CURRENT_DIR)

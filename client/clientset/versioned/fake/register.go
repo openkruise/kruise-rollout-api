@@ -19,6 +19,7 @@ limitations under the License.
 package fake
 
 import (
+	rolloutsv1alpha1 "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1"
 	rolloutsv1beta1 "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -31,6 +32,7 @@ var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
 
 var localSchemeBuilder = runtime.SchemeBuilder{
+	rolloutsv1alpha1.AddToScheme,
 	rolloutsv1beta1.AddToScheme,
 }
 

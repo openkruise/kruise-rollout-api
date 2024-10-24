@@ -13,7 +13,7 @@ cp -r ./{rollouts,hack,vendor,go.mod} "${TMP_DIR}"/src/github.com/openkruise/kru
 
 (cd "${TMP_DIR}"/src/github.com/openkruise/kruise-rollout-api; \
     GOPATH=${TMP_DIR} GO111MODULE=on /bin/bash vendor/k8s.io/code-generator/generate-groups.sh all \
-    github.com/openkruise/kruise-rollout-api/client github.com/openkruise/kruise-rollout-api "rollouts:v1beta1" -h ./hack/boilerplate.go.txt)
+    github.com/openkruise/kruise-rollout-api/client github.com/openkruise/kruise-rollout-api "rollouts:v1alpha1,v1beta1" -h ./hack/boilerplate.go.txt)
 
 mkdir -p ./client
 rm -rf ./client/{clientset,informers,listers}
