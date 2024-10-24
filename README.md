@@ -7,7 +7,7 @@ The canonical location of the Kruise Rollout API definition and client.
 | Kruise-Rollout-API |  Kruise-rollout  |
 |--------------------|------------------|
 | 0.4.1                | <= 0.4           | 
-| 0.5.0                |  0.5             |
+| 0.5.1                |  0.5             |
 
 ## Where does it come from?
 
@@ -26,7 +26,7 @@ go get github.com/openkruise/kruise-rollout-api@latest
 To get a specific version, use go1.11+ and fetch the desired version using the `go get` command. For example:
 
 ```
-go get github.com/openkruise/kruise-rollout-api@v0.4.1
+go get github.com/openkruise/kruise-rollout-api@v0.5.1
 ```
 
 
