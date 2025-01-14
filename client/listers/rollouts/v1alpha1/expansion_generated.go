@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// BatchReleaseListerExpansion allows custom methods to be added to
+// BatchReleaseLister.
+type BatchReleaseListerExpansion interface{}
+
+// BatchReleaseNamespaceListerExpansion allows custom methods to be added to
+// BatchReleaseNamespaceLister.
+type BatchReleaseNamespaceListerExpansion interface{}
+
 // RolloutListerExpansion allows custom methods to be added to
 // RolloutLister.
 type RolloutListerExpansion interface{}
@@ -25,6 +33,14 @@ type RolloutListerExpansion interface{}
 // RolloutNamespaceListerExpansion allows custom methods to be added to
 // RolloutNamespaceLister.
 type RolloutNamespaceListerExpansion interface{}
+
+// RolloutHistoryListerExpansion allows custom methods to be added to
+// RolloutHistoryLister.
+type RolloutHistoryListerExpansion interface{}
+
+// RolloutHistoryNamespaceListerExpansion allows custom methods to be added to
+// RolloutHistoryNamespaceLister.
+type RolloutHistoryNamespaceListerExpansion interface{}
 
 // TrafficRoutingListerExpansion allows custom methods to be added to
 // TrafficRoutingLister.

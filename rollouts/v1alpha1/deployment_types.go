@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1beta1
+package v1alpha1
 
 import (
 	apps "k8s.io/api/apps/v1"
@@ -37,16 +37,6 @@ const (
 	// AdvancedDeploymentControlLabel is label for deployment,
 	// which labels whether the deployment is controlled by advanced-deployment-controller.
 	AdvancedDeploymentControlLabel = "rollouts.kruise.io/controlled-by-advanced-deployment-controller"
-
-	// OriginalDeploymentStrategyAnnotation is annotation for workload in BlueGreen Release,
-	// it will store the original setting of the workload, which will be used to restore the workload
-	OriginalDeploymentStrategyAnnotation = "rollouts.kruise.io/original-deployment-strategy"
-
-	// MaxProgressSeconds is the value we set for ProgressDeadlineSeconds
-	// MaxReadySeconds is the value we set for MinReadySeconds, which is one less than ProgressDeadlineSeconds
-	// MaxInt32: 2147483647, ≈ 68 years
-	MaxProgressSeconds = 1<<31 - 1
-	MaxReadySeconds    = MaxProgressSeconds - 1
 )
 
 // DeploymentStrategy is strategy field for Advanced Deployment
@@ -69,7 +59,7 @@ const (
 	PartitionRollingStyle RollingStyleType = "Partition"
 	// CanaryRollingStyle means rolling in canary way, and will create a canary Deployment.
 	CanaryRollingStyle RollingStyleType = "Canary"
-	// BlueGreenRollingStyle means rolling in blue-green way, and will NOT create a extra Deployment.
+	// BlueGreenRollingStyle means rolling in blue-green way, and will NOT create a canary Deployment.
 	BlueGreenRollingStyle RollingStyleType = "BlueGreen"
 )
 

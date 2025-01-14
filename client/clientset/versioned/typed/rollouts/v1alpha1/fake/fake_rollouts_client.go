@@ -28,8 +28,16 @@ type FakeRolloutsV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeRolloutsV1alpha1) BatchReleases(namespace string) v1alpha1.BatchReleaseInterface {
+	return &FakeBatchReleases{c, namespace}
+}
+
 func (c *FakeRolloutsV1alpha1) Rollouts(namespace string) v1alpha1.RolloutInterface {
 	return &FakeRollouts{c, namespace}
+}
+
+func (c *FakeRolloutsV1alpha1) RolloutHistories(namespace string) v1alpha1.RolloutHistoryInterface {
+	return &FakeRolloutHistories{c, namespace}
 }
 
 func (c *FakeRolloutsV1alpha1) TrafficRoutings(namespace string) v1alpha1.TrafficRoutingInterface {

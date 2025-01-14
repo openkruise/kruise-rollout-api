@@ -1,5 +1,5 @@
 /*
-Copyright 2023 The Kruise Authors.
+Copyright 2022 The Kruise Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1beta1
+package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -70,7 +70,7 @@ type FinalizingPolicyType string
 
 const (
 	// WaitResumeFinalizingPolicyType will wait workload to be resumed, which means
-	// controller will be hold at Finalizing phase until all pods of workload is upgraded.
+	// controller will be hold at Finalizing phase util all pods of workload is upgraded.
 	// WaitResumeFinalizingPolicyType only works in canary-style BatchRelease controller.
 	WaitResumeFinalizingPolicyType FinalizingPolicyType = "WaitResume"
 	// ImmediateFinalizingPolicyType will not to wait workload to be resumed.
@@ -117,8 +117,6 @@ type BatchReleaseStatus struct {
 	// Phase is the release plan phase, which indicates the current state of release
 	// plan state machine in BatchRelease controller.
 	Phase RolloutPhase `json:"phase,omitempty"`
-	// Message provides details on why the rollout is in its current phase
-	Message string `json:"message,omitempty"`
 }
 
 type BatchReleaseCanaryStatus struct {

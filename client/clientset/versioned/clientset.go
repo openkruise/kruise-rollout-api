@@ -35,8 +35,7 @@ type Interface interface {
 	RolloutsV1beta1() rolloutsv1beta1.RolloutsV1beta1Interface
 }
 
-// Clientset contains the clients for groups. Each group has exactly one
-// version included in a Clientset.
+// Clientset contains the clients for groups.
 type Clientset struct {
 	*discovery.DiscoveryClient
 	rolloutsV1alpha1 *rolloutsv1alpha1.RolloutsV1alpha1Client

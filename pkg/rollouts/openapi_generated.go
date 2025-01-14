@@ -30,37 +30,62 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchRelease":             schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchRelease(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseCanaryStatus": schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseCanaryStatus(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseList":         schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseList(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseSpec":         schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseSpec(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseStatus":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStatus":             schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStep":               schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStep(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStepInfo":           schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStepInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStrategy":           schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStrategy(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CustomNetworkRef":         schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CustomNetworkRef(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.DeploymentExtraStatus":    schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_DeploymentExtraStatus(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.DeploymentStrategy":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_DeploymentStrategy(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.GatewayTrafficRouting":    schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_GatewayTrafficRouting(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HTTPRouteInfo":            schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_HTTPRouteInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HttpRouteMatch":           schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_HttpRouteMatch(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.IngressInfo":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_IngressInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.IngressTrafficRouting":    schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_IngressTrafficRouting(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.NameAndSpecData":          schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_NameAndSpecData(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ObjectRef":                schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ObjectRef(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.PatchPodTemplateMetadata": schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_PatchPodTemplateMetadata(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.Pod":                      schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_Pod(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleaseBatch":             schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ReleaseBatch(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleasePlan":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ReleasePlan(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.Rollout":                  schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_Rollout(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutCondition":         schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutCondition(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistory":           schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistory(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistoryList":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistoryList(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistorySpec":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistorySpec(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistoryStatus":     schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistoryStatus(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutInfo":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutList":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutList(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutPause":             schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutPause(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutSpec":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutSpec(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutStatus":            schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutStrategy":          schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutStrategy(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ServiceInfo":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ServiceInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRouting":           schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRouting(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingInfo":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingList":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingList(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingRef":        schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingRef(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingSpec":       schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingSpec(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingStatus":     schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingStrategy":   schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingStrategy(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.WorkloadInfo":             schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_WorkloadInfo(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.WorkloadRef":              schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_WorkloadRef(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchRelease":              schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchRelease(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchReleaseCanaryStatus":  schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchReleaseCanaryStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchReleaseList":          schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchReleaseList(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchReleaseSpec":          schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchReleaseSpec(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchReleaseStatus":        schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchReleaseStatus(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStatus":           schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BlueGreenStatus(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStrategy":         schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BlueGreenStrategy(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStatus":              schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStep":                schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStep(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStrategy":            schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStrategy(ref),
+		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CommonStatus":              schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CommonStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.DeploymentExtraStatus":     schema_openkruise_kruise_rollout_api_rollouts_v1beta1_DeploymentExtraStatus(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.DeploymentStrategy":        schema_openkruise_kruise_rollout_api_rollouts_v1beta1_DeploymentStrategy(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.GatewayTrafficRouting":     schema_openkruise_kruise_rollout_api_rollouts_v1beta1_GatewayTrafficRouting(ref),
@@ -79,6 +104,280 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutStrategy":           schema_openkruise_kruise_rollout_api_rollouts_v1beta1_RolloutStrategy(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.TrafficRoutingRef":         schema_openkruise_kruise_rollout_api_rollouts_v1beta1_TrafficRoutingRef(ref),
 		"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.TrafficRoutingStrategy":    schema_openkruise_kruise_rollout_api_rollouts_v1beta1_TrafficRoutingStrategy(ref),
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchRelease(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseSpec", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseCanaryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"batchState": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CurrentBatchState indicates the release state of the current batch.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentBatch": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The current batch the rollout is working on/blocked, it starts from 0",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"batchReadyTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "BatchReadyTime is the ready timestamp of the current batch or the last batch. This field is updated once a batch ready, and the batches[x].pausedSeconds relies on this field to calculate the real-time duration.",
+							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
+						},
+					},
+					"updatedReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedReplicas is the number of upgraded Pods.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"updatedReadyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedReadyReplicas is the number upgraded Pods that have a Ready Condition.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"noNeedUpdateReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "the number of pods that no need to rollback in rollback scene.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"currentBatch"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BatchReleaseList contains a list of BatchRelease",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchRelease"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchRelease", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BatchReleaseSpec defines how to describe an update between different compRevision",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"targetReference": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TargetRef contains the GVK and name of the workload that we need to upgrade to.",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ObjectRef"),
+						},
+					},
+					"releasePlan": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ReleasePlan is the details on how to rollout the resources",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleasePlan"),
+						},
+					},
+				},
+				Required: []string{"targetReference", "releasePlan"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ObjectRef", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleasePlan"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_BatchReleaseStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BatchReleaseStatus defines the observed state of a release plan",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"conditions": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Conditions represents the observed process state of each phase during executing the release plan.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutCondition"),
+									},
+								},
+							},
+						},
+					},
+					"canaryStatus": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CanaryStatus describes the state of the canary rollout.",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseCanaryStatus"),
+						},
+					},
+					"stableRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StableRevision is the pod-template-hash of stable revision pod template.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"updateRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdateRevision is the pod-template-hash of update revision pod template.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration is the most recent generation observed for this BatchRelease. It corresponds to this BatchRelease's generation, which is updated on mutation by the API Server, and only if BatchRelease Spec was changed, its generation will increase 1.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"observedRolloutID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedRolloutID is the most recent rollout-id observed for this BatchRelease. If RolloutID was changed, we will restart to roll out from batch 0, to ensure the batch-id and rollout-id labels of Pods are correct.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"observedWorkloadReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedWorkloadReplicas is observed replicas of target referenced workload. This field is designed to deal with scaling event during rollout, if this field changed, it means that the workload is scaling during rollout.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"collisionCount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Count of hash collisions for creating canary Deployment. The controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest canary Deployment.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"observedReleasePlanHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedReleasePlanHash is a hash code of observed itself spec.releasePlan.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Phase is the release plan phase, which indicates the current state of release plan state machine in BatchRelease controller.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.BatchReleaseCanaryStatus", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutCondition"},
 	}
 }
 
@@ -215,7 +514,7 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStep(ref commo
 					"requestHeaderModifier": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"),
+							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"),
 						},
 					},
 					"matches": {
@@ -249,7 +548,43 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStep(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HttpRouteMatch", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutPause", "k8s.io/apimachinery/pkg/util/intstr.IntOrString", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HttpRouteMatch", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutPause", "k8s.io/apimachinery/pkg/util/intstr.IntOrString", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CanaryStepInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CanaryStepInfo indicates the pods for a revision",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"canaryStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CanaryStepIndex indicates step this revision",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"pods": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Pods indicates the pods information",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.Pod"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.Pod"},
 	}
 }
 
@@ -349,6 +684,75 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_CustomNetworkRef(ref
 	}
 }
 
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_DeploymentExtraStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentExtraStatus is extra status field for Advanced Deployment",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"updatedReadyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedReadyReplicas the number of pods that has been updated and ready.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"expectedUpdatedReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ExpectedUpdatedReplicas is an absolute number calculated based on Partition and Deployment.Spec.Replicas, means how many pods are expected be updated under current strategy. This field is designed to avoid users to fall into the details of algorithm for Partition calculation.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_DeploymentStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentStrategy is strategy field for Advanced Deployment",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"rollingStyle": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RollingStyle define the behavior of rolling for deployment.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"rollingUpdate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "original deployment strategy rolling update fields",
+							Ref:         ref("k8s.io/api/apps/v1.RollingUpdateDeployment"),
+						},
+					},
+					"paused": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Paused = true will block the upgrade of Pods",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"partition": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Partition describe how many Pods should be updated during rollout. We use this field to implement partition-style rolling update.",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/apps/v1.RollingUpdateDeployment", "k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+	}
+}
+
 func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_GatewayTrafficRouting(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -366,6 +770,37 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_GatewayTrafficRoutin
 				},
 			},
 		},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_HTTPRouteInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "HTTPRouteInfo indicates information of gateway API",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -397,6 +832,37 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_HttpRouteMatch(ref c
 	}
 }
 
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_IngressInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressInfo indicates information of the ingress related",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
+	}
+}
+
 func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_IngressTrafficRouting(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -423,6 +889,36 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_IngressTrafficRoutin
 				Required: []string{"name"},
 			},
 		},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_NameAndSpecData(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -487,6 +983,141 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_PatchPodTemplateMeta
 				},
 			},
 		},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_Pod(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Pod indicates the information of a pod, including name, ip, node_name.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the node name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"ip": {
+						SchemaProps: spec.SchemaProps{
+							Description: "IP indicates the pod ip",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"nodeName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NodeName indicates the node which pod is located at",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ReleaseBatch(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReleaseBatch is used to describe how each batch release should be",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"canaryReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CanaryReplicas is the number of upgraded pods that should have in this batch. it can be an absolute number (ex: 5) or a percentage of workload replicas. batches[i].canaryReplicas should less than or equal to batches[j].canaryReplicas if i < j.",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+						},
+					},
+				},
+				Required: []string{"canaryReplicas"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ReleasePlan(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReleasePlan fines the details of the release plan",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"batches": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Batches is the details on each batch of the ReleasePlan. Users can specify their batch plan in this field, such as: batches: - canaryReplicas: 1  # batches 0 - canaryReplicas: 2  # batches 1 - canaryReplicas: 5  # batches 2 Not that these canaryReplicas should be a non-decreasing sequence.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleaseBatch"),
+									},
+								},
+							},
+						},
+					},
+					"batchPartition": {
+						SchemaProps: spec.SchemaProps{
+							Description: "All pods in the batches up to the batchPartition (included) will have the target resource specification while the rest still is the stable revision. This is designed for the operators to manually rollout. Default is nil, which means no partition and will release all batches. BatchPartition start from 0.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"rolloutID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RolloutID indicates an id for each rollout progress",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"failureThreshold": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FailureThreshold indicates how many failed pods can be tolerated in all upgraded pods. Only when FailureThreshold are satisfied, Rollout can enter ready state. If FailureThreshold is nil, Rollout will use the MaxUnavailable of workload as its FailureThreshold. Defaults to nil.",
+							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+						},
+					},
+					"finalizingPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FinalizingPolicy define the behavior of controller when phase enter Finalizing Defaults to \"Immediate\"",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"patchPodTemplateMetadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PatchPodTemplateMetadata indicates patch configuration(e.g. labels, annotations) to the canary deployment podTemplateSpec.metadata only support for canary deployment",
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.PatchPodTemplateMetadata"),
+						},
+					},
+					"rollingStyle": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RollingStyle can be \"Canary\", \"Partiton\" or \"BlueGreen\"",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"enableExtraWorkloadForCanary": {
+						SchemaProps: spec.SchemaProps{
+							Description: "EnableExtraWorkloadForCanary indicates whether to create extra workload for canary True corresponds to RollingStyle \"Canary\". False corresponds to RollingStyle \"Partiton\". Ignored in BlueGreen-style. This field is about to deprecate, use RollingStyle instead. If both of them are set, controller will only consider this filed when RollingStyle is empty",
+							Default:     false,
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"enableExtraWorkloadForCanary"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.PatchPodTemplateMetadata", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ReleaseBatch", "k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
 	}
 }
 
@@ -596,6 +1227,220 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutCondition(ref
 		},
 		Dependencies: []string{
 			"k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistory(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RolloutHistory is the Schema for the rollouthistories API",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistorySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistoryStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistorySpec", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistoryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RolloutHistoryList contains a list of RolloutHistory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistory"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutHistory", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistorySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RolloutHistorySpec defines the desired state of RolloutHistory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"rollout": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Rollout indicates information of the rollout related with rollouthistory",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutInfo"),
+						},
+					},
+					"workload": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Workload indicates information of the workload, such as cloneset, deployment, advanced statefulset",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.WorkloadInfo"),
+						},
+					},
+					"service": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Service indicates information of the service related with workload",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ServiceInfo"),
+						},
+					},
+					"trafficRouting": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TrafficRouting indicates information of traffic route related with workload",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingInfo"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.RolloutInfo", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.ServiceInfo", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingInfo", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.WorkloadInfo"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutHistoryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RolloutHistoryStatus defines the observed state of RolloutHistory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Phase indicates phase of RolloutHistory, just \"\" or \"completed\"",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"canarySteps": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CanarySteps indicates the pods released each step",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStepInfo"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.CanaryStepInfo"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RolloutInfo indicates information of the rollout related",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"rolloutID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RolloutID indicates the new rollout if there is no new RolloutID this time, ignore it and not execute RolloutHistory",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"rolloutID", "name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -796,6 +1641,37 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_RolloutStrategy(ref 
 	}
 }
 
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_ServiceInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceInfo indicates information of the service related",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
+	}
+}
+
 func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRouting(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -840,6 +1716,33 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRouting(ref c
 		},
 		Dependencies: []string{
 			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingSpec", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.TrafficRoutingStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "TrafficRoutingInfo indicates information of Gateway API or Ingress",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ingress": {
+						SchemaProps: spec.SchemaProps{
+							Description: "IngressRef indicates information of ingress",
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.IngressInfo"),
+						},
+					},
+					"httpRoute": {
+						SchemaProps: spec.SchemaProps{
+							Description: "HTTPRouteRef indacates information of Gateway API",
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HTTPRouteInfo"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HTTPRouteInfo", "github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.IngressInfo"},
 	}
 }
 
@@ -1034,7 +1937,7 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingStrate
 					"requestHeaderModifier": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"),
+							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"),
 						},
 					},
 					"matches": {
@@ -1055,7 +1958,52 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_TrafficRoutingStrate
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HttpRouteMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1alpha1.HttpRouteMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1alpha1_WorkloadInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "WorkloadInfo indicates information of the workload, such as cloneset, deployment, advanced statefulset",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name indicates the name of object ref, such as rollout name, workload name, ingress name, etc.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data indecates the spec of object ref",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -1363,11 +2311,199 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BatchReleaseStatus(re
 							Format:      "",
 						},
 					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Message provides details on why the rollout is in its current phase",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
 			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BatchReleaseCanaryStatus", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutCondition"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BlueGreenStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BlueGreenStatus status fields that only pertain to the blueGreen rollout",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedWorkloadGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedWorkloadGeneration is the most recent generation observed for this Rollout ref workload generation.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"observedRolloutID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedRolloutID will record the newest spec.RolloutID if status.canaryRevision equals to workload.updateRevision",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"rolloutHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RolloutHash from rollout.spec object",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"stableRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StableRevision indicates the revision of stable pods",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"podTemplateHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "pod template hash is used as service selector label",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CurrentStepIndex defines the current step of the rollout is on.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"nextStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"finalisingStep": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FinalisingStep the step of finalising",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentStepState": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lastUpdateTime": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
+						},
+					},
+					"updatedRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedRevision is calculated by rollout based on podTemplateHash, and the internal logic flow uses It may be different from rs podTemplateHash in different k8s versions, so it cannot be used as service selector label",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"updatedReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedReplicas the numbers of updated pods",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"updatedReadyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "UpdatedReadyReplicas the numbers of updated ready pods",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"podTemplateHash", "nextStepIndex", "finalisingStep", "currentStepState", "updatedRevision", "updatedReplicas", "updatedReadyReplicas"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_BlueGreenStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BlueGreenStrategy defines parameters for Blue Green Release",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"steps": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Steps define the order of phases to execute release in batches(20%, 40%, 60%, 80%, 100%)",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStep"),
+									},
+								},
+							},
+						},
+					},
+					"trafficRoutings": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TrafficRoutings support ingress, gateway api and custom network resource(e.g. istio, apisix) to enable more fine-grained traffic routing and current only support one TrafficRouting",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.TrafficRoutingRef"),
+									},
+								},
+							},
+						},
+					},
+					"failureThreshold": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FailureThreshold indicates how many failed pods can be tolerated in all upgraded pods. Only when FailureThreshold are satisfied, Rollout can enter ready state. If FailureThreshold is nil, Rollout will use the MaxUnavailable of workload as its FailureThreshold. Defaults to nil.",
+							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+						},
+					},
+					"trafficRoutingRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TrafficRoutingRef is TrafficRouting's Name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"disableGenerateCanaryService": {
+						SchemaProps: spec.SchemaProps{
+							Description: "canary service will not be generated if DisableGenerateCanaryService is true",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStep", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.TrafficRoutingRef", "k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
 	}
 }
 
@@ -1406,17 +2542,59 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStatus(ref comm
 							Format:      "",
 						},
 					},
-					"canaryRevision": {
+					"podTemplateHash": {
 						SchemaProps: spec.SchemaProps{
-							Description: "CanaryRevision is calculated by rollout based on podTemplateHash, and the internal logic flow uses It may be different from rs podTemplateHash in different k8s versions, so it cannot be used as service selector label",
+							Description: "pod template hash is used as service selector label",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"podTemplateHash": {
+					"currentStepIndex": {
 						SchemaProps: spec.SchemaProps{
-							Description: "pod template hash is used as service selector label",
+							Description: "CurrentStepIndex defines the current step of the rollout is on.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"nextStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"finalisingStep": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FinalisingStep the step of finalising",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentStepState": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lastUpdateTime": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
+						},
+					},
+					"canaryRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CanaryRevision is calculated by rollout based on podTemplateHash, and the internal logic flow uses It may be different from rs podTemplateHash in different k8s versions, so it cannot be used as service selector label",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -1438,34 +2616,8 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStatus(ref comm
 							Format:      "int32",
 						},
 					},
-					"currentStepIndex": {
-						SchemaProps: spec.SchemaProps{
-							Description: "CurrentStepIndex defines the current step of the rollout is on. If the current step index is null, the controller will execute the rollout.",
-							Default:     0,
-							Type:        []string{"integer"},
-							Format:      "int32",
-						},
-					},
-					"currentStepState": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"message": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"lastUpdateTime": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
-						},
-					},
 				},
-				Required: []string{"canaryRevision", "podTemplateHash", "canaryReplicas", "canaryReadyReplicas", "currentStepState"},
+				Required: []string{"podTemplateHash", "nextStepIndex", "finalisingStep", "currentStepState", "canaryRevision", "canaryReplicas", "canaryReadyReplicas"},
 			},
 		},
 		Dependencies: []string{
@@ -1490,12 +2642,12 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStep(ref common
 					"requestHeaderModifier": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"),
+							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"),
 						},
 					},
 					"matches": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Matches define conditions used for matching the incoming HTTP requests to canary service. Each match is independent, i.e. this rule will be matched if **any** one of the matches is satisfied. If Gateway API, current only support one match. And cannot support both weight and matches, if both are configured, then matches takes precedence.",
+							Description: "Matches define conditions used for matching incoming HTTP requests to the canary service. Each match is independent, i.e. this rule will be matched as long as **any** one of the matches is satisfied.\n\nIt cannot support Traffic (weight-based routing) and Matches simultaneously, if both are configured. In such cases, Matches takes precedence.",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -1524,7 +2676,7 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStep(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.HttpRouteMatch", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutPause", "k8s.io/apimachinery/pkg/util/intstr.IntOrString", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.HttpRouteMatch", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutPause", "k8s.io/apimachinery/pkg/util/intstr.IntOrString", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"},
 	}
 }
 
@@ -1589,11 +2741,112 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CanaryStrategy(ref co
 							Format:      "",
 						},
 					},
+					"disableGenerateCanaryService": {
+						SchemaProps: spec.SchemaProps{
+							Description: "canary service will not be generated if DisableGenerateCanaryService is true",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
 			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStep", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.PatchPodTemplateMetadata", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.TrafficRoutingRef", "k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+	}
+}
+
+func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_CommonStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "fields in CommonStatus are shared between canary status and bluegreen status if a field is accessed in strategy-agnostic way, e.g. accessed from rollout_progressing.go, or rollout_status.go then it can be put into CommonStatus if a field is only accessed in strategy-specific way, e.g. accessed from rollout_canary.go or rollout_bluegreen.go then it should stay behind with CanaryStatus or BlueGreenStatus",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedWorkloadGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedWorkloadGeneration is the most recent generation observed for this Rollout ref workload generation.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"observedRolloutID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedRolloutID will record the newest spec.RolloutID if status.canaryRevision equals to workload.updateRevision",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"rolloutHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RolloutHash from rollout.spec object",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"stableRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StableRevision indicates the revision of stable pods",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"podTemplateHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "pod template hash is used as service selector label",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CurrentStepIndex defines the current step of the rollout is on.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"nextStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"finalisingStep": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FinalisingStep the step of finalising",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"currentStepState": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lastUpdateTime": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
+						},
+					},
+				},
+				Required: []string{"podTemplateHash", "nextStepIndex", "finalisingStep", "currentStepState"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
@@ -1692,7 +2945,21 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_HttpRouteMatch(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Path specifies a HTTP request path matcher. Supported list: - Istio: https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest - GatewayAPI: If path is defined, the whole HttpRouteMatch will be used as a standalone matcher",
+							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPPathMatch"),
+						},
+					},
 					"headers": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"name",
+								},
+								"x-kubernetes-list-type": "map",
+							},
+						},
 						SchemaProps: spec.SchemaProps{
 							Description: "Headers specifies HTTP request header matchers. Multiple match values are ANDed together, meaning, a request must match all the specified headers to select the route.",
 							Type:        []string{"array"},
@@ -1706,11 +2973,33 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_HttpRouteMatch(ref co
 							},
 						},
 					},
+					"queryParams": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"name",
+								},
+								"x-kubernetes-list-type": "map",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "QueryParams specifies HTTP query parameter matchers. Multiple match values are ANDed together, meaning, a request must match all the specified query parameters to select the route. Supported list: - Istio: https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest - MSE Ingress: https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/annotations-supported-by-mse-ingress-gateways-1\n  Header/Cookie > QueryParams\n- Gateway API",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPQueryParamMatch"),
+									},
+								},
+							},
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderMatch"},
+			"sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPPathMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPQueryParamMatch"},
 	}
 }
 
@@ -1902,9 +3191,16 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_ReleasePlan(ref commo
 							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.PatchPodTemplateMetadata"),
 						},
 					},
+					"rollingStyle": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RollingStyle can be \"Canary\", \"Partiton\" or \"BlueGreen\"",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"enableExtraWorkloadForCanary": {
 						SchemaProps: spec.SchemaProps{
-							Description: "If true, then it will create new deployment for canary, such as: workload-demo-canary. When user verifies that the canary version is ready, we will remove the canary deployment and release the deployment workload-demo in full. Current only support k8s native deployment",
+							Description: "EnableExtraWorkloadForCanary indicates whether to create extra workload for canary True corresponds to RollingStyle \"Canary\". False corresponds to RollingStyle \"Partiton\". Ignored in BlueGreen-style. This field is about to deprecate, use RollingStyle instead. If both of them are set, controller will only consider this filed when RollingStyle is empty",
 							Default:     false,
 							Type:        []string{"boolean"},
 							Format:      "",
@@ -2155,6 +3451,12 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_RolloutStatus(ref com
 							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStatus"),
 						},
 					},
+					"blueGreenStatus": {
+						SchemaProps: spec.SchemaProps{
+							Description: "BlueGreen describes the state of the blueGreen rollout",
+							Ref:         ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStatus"),
+						},
+					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Conditions a list of conditions a rollout can have.",
@@ -2183,11 +3485,27 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_RolloutStatus(ref com
 							Format:      "",
 						},
 					},
+					"currentStepIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "These two values will be synchronized with the same fileds in CanaryStatus or BlueGreeenStatus mainly used to provide info for kubectl get command",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"currentStepState": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
 				},
+				Required: []string{"currentStepIndex", "currentStepState"},
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStatus", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutCondition"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStatus", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStatus", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.RolloutCondition"},
 	}
 }
 
@@ -2210,11 +3528,16 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_RolloutStrategy(ref c
 							Ref: ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStrategy"),
 						},
 					},
+					"blueGreen": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStrategy"),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStrategy"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.BlueGreenStrategy", "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.CanaryStrategy"},
 	}
 }
 
@@ -2291,12 +3614,12 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_TrafficRoutingStrateg
 					"requestHeaderModifier": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"),
+							Ref:         ref("sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"),
 						},
 					},
 					"matches": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Matches define conditions used for matching the incoming HTTP requests to canary service. Each match is independent, i.e. this rule will be matched if **any** one of the matches is satisfied. If Gateway API, current only support one match. And cannot support both weight and matches, if both are configured, then matches takes precedence.",
+							Description: "Matches define conditions used for matching incoming HTTP requests to the canary service. Each match is independent, i.e. this rule will be matched as long as **any** one of the matches is satisfied.\n\nIt cannot support Traffic (weight-based routing) and Matches simultaneously, if both are configured. In such cases, Matches takes precedence.",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -2312,6 +3635,6 @@ func schema_openkruise_kruise_rollout_api_rollouts_v1beta1_TrafficRoutingStrateg
 			},
 		},
 		Dependencies: []string{
-			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.HttpRouteMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRequestHeaderFilter"},
+			"github.com/openkruise/kruise-rollout-api/rollouts/v1beta1.HttpRouteMatch", "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPHeaderFilter"},
 	}
 }
