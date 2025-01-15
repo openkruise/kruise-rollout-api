@@ -4,14 +4,16 @@ import (
 	"context"
 	"flag"
 	"fmt"
+
 	rolloutsv1beta1 "github.com/openkruise/kruise-rollout-api/client/clientset/versioned"
 	rolloutapi "github.com/openkruise/kruise-rollout-api/rollouts/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
+	"path/filepath"
+
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
-	"path/filepath"
 )
 
 func main() {

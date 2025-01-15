@@ -6,6 +6,9 @@ else
 GOBIN=$(shell go env GOBIN)
 endif
 
+KIND_VERSION ?= v0.18.0
+CLUSTER_NAME ?= rollout-ci-testing
+
 # Run go vet against code
 vet:
 	go vet ./...
@@ -46,6 +49,28 @@ GOBIN=$(PROJECT_DIR)/bin go install $(2) ;\
 rm -rf $$TMP_DIR ;\
 }
 endef
+
+ensure-kind:
+ifeq ("$(shell command -v $(PROJECT_DIR)/bin/kind 2> /dev/null)", "")
+	@echo "Downloading kind version $(KIND_VERSION)"
+	GOBIN=$(PROJECT_DIR)/bin go install sigs.k8s.io/kind@$(KIND_VERSION)
+else
+	@echo "kind is already installed."
+endif
+
+delete-cluster: ensure-kind
+	@echo "Deleting kind cluster $(CLUSTER_NAME) if it exists"
+	bin/kind delete cluster --name $(CLUSTER_NAME) || true
+
+create-cluster: ensure-kind
+	bin/kind create cluster --name $(CLUSTER_NAME)
+
+.PHONY: run-e2e-test
+run-e2e-test:
+	@echo "Installing Rollouts CRDs"
+	kubectl apply -f https://raw.githubusercontent.com/openkruise/rollouts/refs/heads/master/config/crd/bases/rollouts.kruise.io_rollouts.yaml
+	@echo "Running E2E tests"
+	go test -v ./tests/e2e/...
 
 .PHONY: gen-schema-only
 gen-schema-only:
