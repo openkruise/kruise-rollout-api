@@ -37,18 +37,10 @@ jobs:
         with:
           node_image: ${{ env.KIND_IMAGE }}
           cluster_name: ${{ env.KIND_CLUSTER_NAME }}
-          config: ./test/kind-conf.yaml
           version: ${{ env.KIND_VERSION }}
 
       - name: Install dependencies
         run: go mod download
-
-      - name: Setup KinD
-        run: |
-          go install sigs.k8s.io/kind@v0.18.0
-          kind delete cluster || true
-          kind create cluster
-          kubectl apply -f https://raw.githubusercontent.com/openkruise/rollouts/refs/heads/master/config/crd/bases/rollouts.kruise.io_rollouts.yaml
 
       - name: Run E2E tests
         run: go test -v ./tests/e2e/...
