@@ -18,10 +18,6 @@ limitations under the License.
 
 package v1alpha1
 
-type BatchReleaseExpansion interface{}
-
 type RolloutExpansion interface{}
-
-type RolloutHistoryExpansion interface{}
 
 type TrafficRoutingExpansion interface{}

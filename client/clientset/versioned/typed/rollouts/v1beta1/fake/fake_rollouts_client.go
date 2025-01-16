@@ -28,10 +28,6 @@ type FakeRolloutsV1beta1 struct {
 	*testing.Fake
 }
 
-func (c *FakeRolloutsV1beta1) BatchReleases(namespace string) v1beta1.BatchReleaseInterface {
-	return &FakeBatchReleases{c, namespace}
-}
-
 func (c *FakeRolloutsV1beta1) Rollouts(namespace string) v1beta1.RolloutInterface {
 	return &FakeRollouts{c, namespace}
 }

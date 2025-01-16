@@ -28,9 +28,7 @@ import (
 
 type RolloutsV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	BatchReleasesGetter
 	RolloutsGetter
-	RolloutHistoriesGetter
 	TrafficRoutingsGetter
 }
 
@@ -39,16 +37,8 @@ type RolloutsV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *RolloutsV1alpha1Client) BatchReleases(namespace string) BatchReleaseInterface {
-	return newBatchReleases(c, namespace)
-}
-
 func (c *RolloutsV1alpha1Client) Rollouts(namespace string) RolloutInterface {
 	return newRollouts(c, namespace)
-}
-
-func (c *RolloutsV1alpha1Client) RolloutHistories(namespace string) RolloutHistoryInterface {
-	return newRolloutHistories(c, namespace)
 }
 
 func (c *RolloutsV1alpha1Client) TrafficRoutings(namespace string) TrafficRoutingInterface {

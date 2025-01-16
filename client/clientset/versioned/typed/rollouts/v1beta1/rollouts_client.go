@@ -28,17 +28,12 @@ import (
 
 type RolloutsV1beta1Interface interface {
 	RESTClient() rest.Interface
-	BatchReleasesGetter
 	RolloutsGetter
 }
 
 // RolloutsV1beta1Client is used to interact with features provided by the rollouts.kruise.io group.
 type RolloutsV1beta1Client struct {
 	restClient rest.Interface
-}
-
-func (c *RolloutsV1beta1Client) BatchReleases(namespace string) BatchReleaseInterface {
-	return newBatchReleases(c, namespace)
 }
 
 func (c *RolloutsV1beta1Client) Rollouts(namespace string) RolloutInterface {

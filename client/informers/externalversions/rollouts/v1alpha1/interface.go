@@ -24,12 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// BatchReleases returns a BatchReleaseInformer.
-	BatchReleases() BatchReleaseInformer
 	// Rollouts returns a RolloutInformer.
 	Rollouts() RolloutInformer
-	// RolloutHistories returns a RolloutHistoryInformer.
-	RolloutHistories() RolloutHistoryInformer
 	// TrafficRoutings returns a TrafficRoutingInformer.
 	TrafficRoutings() TrafficRoutingInformer
 }
@@ -45,19 +41,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// BatchReleases returns a BatchReleaseInformer.
-func (v *version) BatchReleases() BatchReleaseInformer {
-	return &batchReleaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
 // Rollouts returns a RolloutInformer.
 func (v *version) Rollouts() RolloutInformer {
 	return &rolloutInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// RolloutHistories returns a RolloutHistoryInformer.
-func (v *version) RolloutHistories() RolloutHistoryInformer {
-	return &rolloutHistoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // TrafficRoutings returns a TrafficRoutingInformer.

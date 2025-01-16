@@ -18,14 +18,6 @@ limitations under the License.
 
 package v1beta1
 
-// BatchReleaseListerExpansion allows custom methods to be added to
-// BatchReleaseLister.
-type BatchReleaseListerExpansion interface{}
-
-// BatchReleaseNamespaceListerExpansion allows custom methods to be added to
-// BatchReleaseNamespaceLister.
-type BatchReleaseNamespaceListerExpansion interface{}
-
 // RolloutListerExpansion allows custom methods to be added to
 // RolloutLister.
 type RolloutListerExpansion interface{}
