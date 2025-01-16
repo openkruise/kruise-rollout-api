@@ -109,7 +109,7 @@
                 },
                 "requestHeaderModifier": {
                     "description": "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRequestHeaderFilter"
+                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPHeaderFilter"
                 },
                 "weight": {
                     "description": "Weight indicate how many percentage of traffic the canary pods should receive",
@@ -708,7 +708,7 @@
                 },
                 "requestHeaderModifier": {
                     "description": "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRequestHeaderFilter"
+                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPHeaderFilter"
                 },
                 "weight": {
                     "description": "Weight indicate how many percentage of traffic the canary pods should receive",
@@ -757,200 +757,131 @@
                 }
             ]
         },
-        "io.kruise.rollouts.v1beta1.BatchRelease": {
-            "type": "object",
-            "properties": {
-                "apiVersion": {
-                    "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-                    "type": "string"
-                },
-                "kind": {
-                    "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-                    "type": "string"
-                },
-                "metadata": {
-                    "default": {},
-                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-                },
-                "spec": {
-                    "default": {},
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BatchReleaseSpec"
-                },
-                "status": {
-                    "default": {},
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BatchReleaseStatus"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "BatchRelease",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.BatchReleaseCanaryStatus": {
+        "io.kruise.rollouts.v1beta1.BlueGreenStatus": {
+            "description": "BlueGreenStatus status fields that only pertain to the blueGreen rollout",
             "type": "object",
             "required": [
-                "currentBatch"
+                "podTemplateHash",
+                "nextStepIndex",
+                "finalisingStep",
+                "currentStepState",
+                "updatedRevision",
+                "updatedReplicas",
+                "updatedReadyReplicas"
             ],
             "properties": {
-                "batchReadyTime": {
-                    "description": "BatchReadyTime is the ready timestamp of the current batch or the last batch. This field is updated once a batch ready, and the batches[x].pausedSeconds relies on this field to calculate the real-time duration.",
-                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-                },
-                "batchState": {
-                    "description": "CurrentBatchState indicates the release state of the current batch.",
-                    "type": "string"
-                },
-                "currentBatch": {
-                    "description": "The current batch the rollout is working on/blocked, it starts from 0",
+                "currentStepIndex": {
+                    "description": "CurrentStepIndex defines the current step of the rollout is on.",
                     "type": "integer",
                     "format": "int32",
                     "default": 0
                 },
-                "noNeedUpdateReplicas": {
-                    "description": "the number of pods that no need to rollback in rollback scene.",
-                    "type": "integer",
-                    "format": "int32"
+                "currentStepState": {
+                    "type": "string",
+                    "default": ""
                 },
-                "updatedReadyReplicas": {
-                    "description": "UpdatedReadyReplicas is the number upgraded Pods that have a Ready Condition.",
-                    "type": "integer",
-                    "format": "int32"
+                "finalisingStep": {
+                    "description": "FinalisingStep the step of finalising",
+                    "type": "string",
+                    "default": ""
                 },
-                "updatedReplicas": {
-                    "description": "UpdatedReplicas is the number of upgraded Pods.",
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "BatchReleaseCanaryStatus",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.BatchReleaseList": {
-            "description": "BatchReleaseList contains a list of BatchRelease",
-            "type": "object",
-            "required": [
-                "items"
-            ],
-            "properties": {
-                "apiVersion": {
-                    "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+                "lastUpdateTime": {
+                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+                },
+                "message": {
                     "type": "string"
                 },
-                "items": {
-                    "type": "array",
-                    "items": {
-                        "default": {},
-                        "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BatchRelease"
-                    }
+                "nextStepIndex": {
+                    "description": "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
                 },
-                "kind": {
-                    "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "observedRolloutID": {
+                    "description": "ObservedRolloutID will record the newest spec.RolloutID if status.canaryRevision equals to workload.updateRevision",
                     "type": "string"
                 },
-                "metadata": {
-                    "default": {},
-                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "BatchReleaseList",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.BatchReleaseSpec": {
-            "description": "BatchReleaseSpec defines how to describe an update between different compRevision",
-            "type": "object",
-            "required": [
-                "releasePlan"
-            ],
-            "properties": {
-                "releasePlan": {
-                    "description": "ReleasePlan is the details on how to rollout the resources",
-                    "default": {},
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.ReleasePlan"
-                },
-                "workloadRef": {
-                    "description": "WorkloadRef contains enough information to let you identify a workload for Rollout Batch release of the bypass",
-                    "default": {},
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.ObjectRef"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "BatchReleaseSpec",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.BatchReleaseStatus": {
-            "description": "BatchReleaseStatus defines the observed state of a release plan",
-            "type": "object",
-            "properties": {
-                "canaryStatus": {
-                    "description": "CanaryStatus describes the state of the canary rollout.",
-                    "default": {},
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BatchReleaseCanaryStatus"
-                },
-                "collisionCount": {
-                    "description": "Count of hash collisions for creating canary Deployment. The controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest canary Deployment.",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "conditions": {
-                    "description": "Conditions represents the observed process state of each phase during executing the release plan.",
-                    "type": "array",
-                    "items": {
-                        "default": {},
-                        "$ref": "#/definitions/io.kruise.rollouts.v1beta1.RolloutCondition"
-                    }
-                },
-                "observedGeneration": {
-                    "description": "ObservedGeneration is the most recent generation observed for this BatchRelease. It corresponds to this BatchRelease's generation, which is updated on mutation by the API Server, and only if BatchRelease Spec was changed, its generation will increase 1.",
+                "observedWorkloadGeneration": {
+                    "description": "observedWorkloadGeneration is the most recent generation observed for this Rollout ref workload generation.",
                     "type": "integer",
                     "format": "int64"
                 },
-                "observedReleasePlanHash": {
-                    "description": "ObservedReleasePlanHash is a hash code of observed itself spec.releasePlan.",
-                    "type": "string"
+                "podTemplateHash": {
+                    "description": "pod template hash is used as service selector label",
+                    "type": "string",
+                    "default": ""
                 },
-                "observedRolloutID": {
-                    "description": "ObservedRolloutID is the most recent rollout-id observed for this BatchRelease. If RolloutID was changed, we will restart to roll out from batch 0, to ensure the batch-id and rollout-id labels of Pods are correct.",
-                    "type": "string"
-                },
-                "observedWorkloadReplicas": {
-                    "description": "ObservedWorkloadReplicas is observed replicas of target referenced workload. This field is designed to deal with scaling event during rollout, if this field changed, it means that the workload is scaling during rollout.",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "phase": {
-                    "description": "Phase is the release plan phase, which indicates the current state of release plan state machine in BatchRelease controller.",
+                "rolloutHash": {
+                    "description": "RolloutHash from rollout.spec object",
                     "type": "string"
                 },
                 "stableRevision": {
-                    "description": "StableRevision is the pod-template-hash of stable revision pod template.",
+                    "description": "StableRevision indicates the revision of stable pods",
                     "type": "string"
                 },
-                "updateRevision": {
-                    "description": "UpdateRevision is the pod-template-hash of update revision pod template.",
-                    "type": "string"
+                "updatedReadyReplicas": {
+                    "description": "UpdatedReadyReplicas the numbers of updated ready pods",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                },
+                "updatedReplicas": {
+                    "description": "UpdatedReplicas the numbers of updated pods",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                },
+                "updatedRevision": {
+                    "description": "UpdatedRevision is calculated by rollout based on podTemplateHash, and the internal logic flow uses It may be different from rs podTemplateHash in different k8s versions, so it cannot be used as service selector label",
+                    "type": "string",
+                    "default": ""
                 }
             },
             "x-kubernetes-group-version-kind": [
                 {
                     "group": "rollouts.kruise.io",
-                    "kind": "BatchReleaseStatus",
+                    "kind": "BlueGreenStatus",
+                    "version": "v1beta1"
+                }
+            ]
+        },
+        "io.kruise.rollouts.v1beta1.BlueGreenStrategy": {
+            "description": "BlueGreenStrategy defines parameters for Blue Green Release",
+            "type": "object",
+            "properties": {
+                "disableGenerateCanaryService": {
+                    "description": "canary service will not be generated if DisableGenerateCanaryService is true",
+                    "type": "boolean"
+                },
+                "failureThreshold": {
+                    "description": "FailureThreshold indicates how many failed pods can be tolerated in all upgraded pods. Only when FailureThreshold are satisfied, Rollout can enter ready state. If FailureThreshold is nil, Rollout will use the MaxUnavailable of workload as its FailureThreshold. Defaults to nil.",
+                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+                },
+                "steps": {
+                    "description": "Steps define the order of phases to execute release in batches(20%, 40%, 60%, 80%, 100%)",
+                    "type": "array",
+                    "items": {
+                        "default": {},
+                        "$ref": "#/definitions/io.kruise.rollouts.v1beta1.CanaryStep"
+                    }
+                },
+                "trafficRoutingRef": {
+                    "description": "TrafficRoutingRef is TrafficRouting's Name",
+                    "type": "string"
+                },
+                "trafficRoutings": {
+                    "description": "TrafficRoutings support ingress, gateway api and custom network resource(e.g. istio, apisix) to enable more fine-grained traffic routing and current only support one TrafficRouting",
+                    "type": "array",
+                    "items": {
+                        "default": {},
+                        "$ref": "#/definitions/io.kruise.rollouts.v1beta1.TrafficRoutingRef"
+                    }
+                }
+            },
+            "x-kubernetes-group-version-kind": [
+                {
+                    "group": "rollouts.kruise.io",
+                    "kind": "BlueGreenStrategy",
                     "version": "v1beta1"
                 }
             ]
@@ -959,11 +890,13 @@
             "description": "CanaryStatus status fields that only pertain to the canary rollout",
             "type": "object",
             "required": [
-                "canaryRevision",
                 "podTemplateHash",
+                "nextStepIndex",
+                "finalisingStep",
+                "currentStepState",
+                "canaryRevision",
                 "canaryReplicas",
-                "canaryReadyReplicas",
-                "currentStepState"
+                "canaryReadyReplicas"
             ],
             "properties": {
                 "canaryReadyReplicas": {
@@ -984,7 +917,7 @@
                     "default": ""
                 },
                 "currentStepIndex": {
-                    "description": "CurrentStepIndex defines the current step of the rollout is on. If the current step index is null, the controller will execute the rollout.",
+                    "description": "CurrentStepIndex defines the current step of the rollout is on.",
                     "type": "integer",
                     "format": "int32",
                     "default": 0
@@ -993,11 +926,22 @@
                     "type": "string",
                     "default": ""
                 },
+                "finalisingStep": {
+                    "description": "FinalisingStep the step of finalising",
+                    "type": "string",
+                    "default": ""
+                },
                 "lastUpdateTime": {
                     "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
                 },
                 "message": {
                     "type": "string"
+                },
+                "nextStepIndex": {
+                    "description": "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
                 },
                 "observedRolloutID": {
                     "description": "ObservedRolloutID will record the newest spec.RolloutID if status.canaryRevision equals to workload.updateRevision",
@@ -1035,7 +979,7 @@
             "type": "object",
             "properties": {
                 "matches": {
-                    "description": "Matches define conditions used for matching the incoming HTTP requests to canary service. Each match is independent, i.e. this rule will be matched if **any** one of the matches is satisfied. If Gateway API, current only support one match. And cannot support both weight and matches, if both are configured, then matches takes precedence.",
+                    "description": "Matches define conditions used for matching incoming HTTP requests to the canary service. Each match is independent, i.e. this rule will be matched as long as **any** one of the matches is satisfied.\n\nIt cannot support Traffic (weight-based routing) and Matches simultaneously, if both are configured. In such cases, Matches takes precedence.",
                     "type": "array",
                     "items": {
                         "default": {},
@@ -1053,7 +997,7 @@
                 },
                 "requestHeaderModifier": {
                     "description": "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRequestHeaderFilter"
+                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPHeaderFilter"
                 },
                 "traffic": {
                     "description": "Traffic indicate how many percentage of traffic the canary pods should receive Value is of string type and is a percentage, e.g. 5%.",
@@ -1072,6 +1016,10 @@
             "description": "CanaryStrategy defines parameters for a Replica Based Canary",
             "type": "object",
             "properties": {
+                "disableGenerateCanaryService": {
+                    "description": "canary service will not be generated if DisableGenerateCanaryService is true",
+                    "type": "boolean"
+                },
                 "enableExtraWorkloadForCanary": {
                     "description": "If true, then it will create new deployment for canary, such as: workload-demo-canary. When user verifies that the canary version is ready, we will remove the canary deployment and release the deployment workload-demo in full. Current only support k8s native deployment",
                     "type": "boolean"
@@ -1109,6 +1057,74 @@
                 {
                     "group": "rollouts.kruise.io",
                     "kind": "CanaryStrategy",
+                    "version": "v1beta1"
+                }
+            ]
+        },
+        "io.kruise.rollouts.v1beta1.CommonStatus": {
+            "description": "fields in CommonStatus are shared between canary status and bluegreen status if a field is accessed in strategy-agnostic way, e.g. accessed from rollout_progressing.go, or rollout_status.go then it can be put into CommonStatus if a field is only accessed in strategy-specific way, e.g. accessed from rollout_canary.go or rollout_bluegreen.go then it should stay behind with CanaryStatus or BlueGreenStatus",
+            "type": "object",
+            "required": [
+                "podTemplateHash",
+                "nextStepIndex",
+                "finalisingStep",
+                "currentStepState"
+            ],
+            "properties": {
+                "currentStepIndex": {
+                    "description": "CurrentStepIndex defines the current step of the rollout is on.",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                },
+                "currentStepState": {
+                    "type": "string",
+                    "default": ""
+                },
+                "finalisingStep": {
+                    "description": "FinalisingStep the step of finalising",
+                    "type": "string",
+                    "default": ""
+                },
+                "lastUpdateTime": {
+                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "nextStepIndex": {
+                    "description": "NextStepIndex defines the next step of the rollout is on. In normal case, NextStepIndex is equal to CurrentStepIndex + 1 If the current step is the last step, NextStepIndex is equal to -1 Before the release, NextStepIndex is also equal to -1 0 is not used and won't appear in any case It is allowed to patch NextStepIndex by design, e.g. if CurrentStepIndex is 2, user can patch NextStepIndex to 3 (if exists) to achieve batch jump, or patch NextStepIndex to 1 to implement a re-execution of step 1 Patching it with a non-positive value is useless and meaningless, which will be corrected in the next reconciliation",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                },
+                "observedRolloutID": {
+                    "description": "ObservedRolloutID will record the newest spec.RolloutID if status.canaryRevision equals to workload.updateRevision",
+                    "type": "string"
+                },
+                "observedWorkloadGeneration": {
+                    "description": "observedWorkloadGeneration is the most recent generation observed for this Rollout ref workload generation.",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "podTemplateHash": {
+                    "description": "pod template hash is used as service selector label",
+                    "type": "string",
+                    "default": ""
+                },
+                "rolloutHash": {
+                    "description": "RolloutHash from rollout.spec object",
+                    "type": "string"
+                },
+                "stableRevision": {
+                    "description": "StableRevision indicates the revision of stable pods",
+                    "type": "string"
+                }
+            },
+            "x-kubernetes-group-version-kind": [
+                {
+                    "group": "rollouts.kruise.io",
+                    "kind": "CommonStatus",
                     "version": "v1beta1"
                 }
             ]
@@ -1192,7 +1208,27 @@
                     "items": {
                         "default": {},
                         "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPHeaderMatch"
-                    }
+                    },
+                    "x-kubernetes-list-map-keys": [
+                        "name"
+                    ],
+                    "x-kubernetes-list-type": "map"
+                },
+                "path": {
+                    "description": "Path specifies a HTTP request path matcher. Supported list: - Istio: https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest - GatewayAPI: If path is defined, the whole HttpRouteMatch will be used as a standalone matcher",
+                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPPathMatch"
+                },
+                "queryParams": {
+                    "description": "QueryParams specifies HTTP query parameter matchers. Multiple match values are ANDed together, meaning, a request must match all the specified query parameters to select the route. Supported list: - Istio: https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest - MSE Ingress: https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/annotations-supported-by-mse-ingress-gateways-1\n  Header/Cookie \u003e QueryParams\n- Gateway API",
+                    "type": "array",
+                    "items": {
+                        "default": {},
+                        "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPQueryParamMatch"
+                    },
+                    "x-kubernetes-list-map-keys": [
+                        "name"
+                    ],
+                    "x-kubernetes-list-type": "map"
                 }
             },
             "x-kubernetes-group-version-kind": [
@@ -1285,77 +1321,6 @@
                 {
                     "group": "rollouts.kruise.io",
                     "kind": "PatchPodTemplateMetadata",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.ReleaseBatch": {
-            "description": "ReleaseBatch is used to describe how each batch release should be",
-            "type": "object",
-            "required": [
-                "canaryReplicas"
-            ],
-            "properties": {
-                "canaryReplicas": {
-                    "description": "CanaryReplicas is the number of upgraded pods that should have in this batch. it can be an absolute number (ex: 5) or a percentage of workload replicas. batches[i].canaryReplicas should less than or equal to batches[j].canaryReplicas if i \u003c j.",
-                    "default": {},
-                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "ReleaseBatch",
-                    "version": "v1beta1"
-                }
-            ]
-        },
-        "io.kruise.rollouts.v1beta1.ReleasePlan": {
-            "description": "ReleasePlan fines the details of the release plan",
-            "type": "object",
-            "required": [
-                "enableExtraWorkloadForCanary"
-            ],
-            "properties": {
-                "batchPartition": {
-                    "description": "All pods in the batches up to the batchPartition (included) will have the target resource specification while the rest still is the stable revision. This is designed for the operators to manually rollout. Default is nil, which means no partition and will release all batches. BatchPartition start from 0.",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "batches": {
-                    "description": "Batches is the details on each batch of the ReleasePlan. Users can specify their batch plan in this field, such as: batches: - canaryReplicas: 1  # batches 0 - canaryReplicas: 2  # batches 1 - canaryReplicas: 5  # batches 2 Not that these canaryReplicas should be a non-decreasing sequence.",
-                    "type": "array",
-                    "items": {
-                        "default": {},
-                        "$ref": "#/definitions/io.kruise.rollouts.v1beta1.ReleaseBatch"
-                    }
-                },
-                "enableExtraWorkloadForCanary": {
-                    "description": "If true, then it will create new deployment for canary, such as: workload-demo-canary. When user verifies that the canary version is ready, we will remove the canary deployment and release the deployment workload-demo in full. Current only support k8s native deployment",
-                    "type": "boolean",
-                    "default": false
-                },
-                "failureThreshold": {
-                    "description": "FailureThreshold indicates how many failed pods can be tolerated in all upgraded pods. Only when FailureThreshold are satisfied, Rollout can enter ready state. If FailureThreshold is nil, Rollout will use the MaxUnavailable of workload as its FailureThreshold. Defaults to nil.",
-                    "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
-                },
-                "finalizingPolicy": {
-                    "description": "FinalizingPolicy define the behavior of controller when phase enter Finalizing Defaults to \"Immediate\"",
-                    "type": "string"
-                },
-                "patchPodTemplateMetadata": {
-                    "description": "PatchPodTemplateMetadata indicates patch configuration(e.g. labels, annotations) to the canary deployment podTemplateSpec.metadata only support for canary deployment",
-                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.PatchPodTemplateMetadata"
-                },
-                "rolloutID": {
-                    "description": "RolloutID indicates an id for each rollout progress",
-                    "type": "string"
-                }
-            },
-            "x-kubernetes-group-version-kind": [
-                {
-                    "group": "rollouts.kruise.io",
-                    "kind": "ReleasePlan",
                     "version": "v1beta1"
                 }
             ]
@@ -1531,7 +1496,15 @@
         "io.kruise.rollouts.v1beta1.RolloutStatus": {
             "description": "RolloutStatus defines the observed state of Rollout",
             "type": "object",
+            "required": [
+                "currentStepIndex",
+                "currentStepState"
+            ],
             "properties": {
+                "blueGreenStatus": {
+                    "description": "BlueGreen describes the state of the blueGreen rollout",
+                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BlueGreenStatus"
+                },
                 "canaryStatus": {
                     "description": "Canary describes the state of the canary rollout",
                     "$ref": "#/definitions/io.kruise.rollouts.v1beta1.CanaryStatus"
@@ -1543,6 +1516,16 @@
                         "default": {},
                         "$ref": "#/definitions/io.kruise.rollouts.v1beta1.RolloutCondition"
                     }
+                },
+                "currentStepIndex": {
+                    "description": "These two values will be synchronized with the same fileds in CanaryStatus or BlueGreeenStatus mainly used to provide info for kubectl get command",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                },
+                "currentStepState": {
+                    "type": "string",
+                    "default": ""
                 },
                 "message": {
                     "description": "Message provides details on why the rollout is in its current phase",
@@ -1570,6 +1553,9 @@
             "description": "RolloutStrategy defines strategy to apply during next rollout",
             "type": "object",
             "properties": {
+                "blueGreen": {
+                    "$ref": "#/definitions/io.kruise.rollouts.v1beta1.BlueGreenStrategy"
+                },
                 "canary": {
                     "$ref": "#/definitions/io.kruise.rollouts.v1beta1.CanaryStrategy"
                 },
@@ -1632,7 +1618,7 @@
             "type": "object",
             "properties": {
                 "matches": {
-                    "description": "Matches define conditions used for matching the incoming HTTP requests to canary service. Each match is independent, i.e. this rule will be matched if **any** one of the matches is satisfied. If Gateway API, current only support one match. And cannot support both weight and matches, if both are configured, then matches takes precedence.",
+                    "description": "Matches define conditions used for matching incoming HTTP requests to the canary service. Each match is independent, i.e. this rule will be matched as long as **any** one of the matches is satisfied.\n\nIt cannot support Traffic (weight-based routing) and Matches simultaneously, if both are configured. In such cases, Matches takes precedence.",
                     "type": "array",
                     "items": {
                         "default": {},
@@ -1641,7 +1627,7 @@
                 },
                 "requestHeaderModifier": {
                     "description": "Set overwrites the request with the given header (name, value) before the action.\n\nInput:\n  GET /foo HTTP/1.1\n  my-header: foo\n\nrequestHeaderModifier:\n  set:\n  - name: \"my-header\"\n    value: \"bar\"\n\nOutput:\n  GET /foo HTTP/1.1\n  my-header: bar",
-                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRequestHeaderFilter"
+                    "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPHeaderFilter"
                 },
                 "traffic": {
                     "description": "Traffic indicate how many percentage of traffic the canary pods should receive Value is of string type and is a percentage, e.g. 5%.",

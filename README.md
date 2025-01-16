@@ -4,10 +4,11 @@ The canonical location of the Kruise Rollout API definition and client.
 
 ## Compatibility matrix
 
-| Kruise-Rollout-API |  Kruise-rollout  |
-|--------------------|------------------|
-| 0.4.1                | <= 0.4           | 
-| 0.5.1                |  0.5             |
+| Kruise-Rollout-API | Kruise-rollout |
+|--------------------|----------------|
+| 0.4.1              | <= 0.4         | 
+| 0.5.1              | 0.5            |
+| 0.6.0              | 0.6            |
 
 ## Where does it come from?
 

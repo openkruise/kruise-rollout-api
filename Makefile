@@ -6,21 +6,27 @@ else
 GOBIN=$(shell go env GOBIN)
 endif
 
+KIND_VERSION ?= v0.18.0
+CLUSTER_NAME ?= rollout-ci-testing
+
+all: generate gen-openapi-schema
+
 # Run go vet against code
 vet:
 	go vet ./...
 
 # Generate code
-generate: controller-gen
-	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./rollouts"
+generate: controller-gen ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
+	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./rollouts/..."
 	@hack/generate_client.sh
 
 CONTROLLER_GEN = $(shell pwd)/bin/controller-gen
+CONTROLLER_GEN_VERSION = v0.16.0
 controller-gen: ## Download controller-gen locally if necessary.
-ifeq ("$(shell $(CONTROLLER_GEN) --version 2> /dev/null)", "Version: v0.7.0")
+ifeq ("$(shell $(CONTROLLER_GEN) --version)", "Version: ${CONTROLLER_GEN_VERSION}")
 else
 	rm -rf $(CONTROLLER_GEN)
-	$(call go-get-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.7.0)
+	$(call go-get-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@${CONTROLLER_GEN_VERSION})
 endif
 
 OPENAPI_GEN = $(shell pwd)/bin/openapi-gen
@@ -46,6 +52,28 @@ GOBIN=$(PROJECT_DIR)/bin go install $(2) ;\
 rm -rf $$TMP_DIR ;\
 }
 endef
+
+ensure-kind:
+ifeq ("$(shell command -v $(PROJECT_DIR)/bin/kind 2> /dev/null)", "")
+	@echo "Downloading kind version $(KIND_VERSION)"
+	GOBIN=$(PROJECT_DIR)/bin go install sigs.k8s.io/kind@$(KIND_VERSION)
+else
+	@echo "kind is already installed."
+endif
+
+delete-cluster: ensure-kind
+	@echo "Deleting kind cluster $(CLUSTER_NAME) if it exists"
+	bin/kind delete cluster --name $(CLUSTER_NAME) || true
+
+create-cluster: ensure-kind
+	bin/kind create cluster --name $(CLUSTER_NAME)
+
+.PHONY: run-e2e-test
+run-e2e-test:
+	@echo "Installing Rollouts CRDs"
+	kubectl apply -f https://raw.githubusercontent.com/openkruise/rollouts/refs/heads/master/config/crd/bases/rollouts.kruise.io_rollouts.yaml
+	@echo "Running E2E tests"
+	go test -v ./tests/e2e/...
 
 .PHONY: gen-schema-only
 gen-schema-only:

@@ -20,9 +20,8 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/openkruise/kruise-rollout-api/utils/scheme"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-        
-        "github.com/openkruise/kruise-rollout-api/utils/scheme"
 )
 
 var (
